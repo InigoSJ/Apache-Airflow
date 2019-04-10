@@ -1,5 +1,5 @@
 # StackOverflow to BigQuery #
-## Inserting metadata for questions, comments and answers that contains certain tags"
+## Inserting metadata for questions, comments and answers that contains certain tags
 
 ### Description ####
 
