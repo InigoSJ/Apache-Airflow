@@ -8,10 +8,10 @@ from apache_beam.io.textio import ReadFromText
 from apache_beam.io.gcp.bigquery import WriteToBigQuery, BigQueryDisposition
 
 #TODO: 
-default_input = 
-default_table =
-default_dataset = 
-project = 
+default_input = ''
+default_table = ''
+default_dataset = ''
+project = ''
 
 
 def run(argv=None):
