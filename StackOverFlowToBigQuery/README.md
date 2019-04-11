@@ -19,6 +19,7 @@ This was done on Google Cloud Composer:
 
 * Add DAG (`StackOverflow_DAG.py`) to the DAG folder in Composer's bucket
 * Add Apache Beam pipeline (`pipeline/api_pipeline.py`) to a Composer's bucket (preferably something like `data/pipelines`)
+* (Optional) Add default values to the pipeline.
 * Add Airflow Variables for (sugestions in parenthesis):
 	* answer_export: path+suffix to where the answers reports are going to be stored (`answers/answer_report`)
 	* comment_export: path+suffix to where the comment reports are going to be stored (`comment/comment_report`)
