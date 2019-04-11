@@ -78,7 +78,7 @@ def run(argv=None):
                     | "API call for each Tag" >> ParDo(fn=QuestionAPI)
                     | "Writing to BQ" >> WriteToBigQuery(table=known_args.table,
                                                          dataset=known_args.dataset,
-                                                         project="onetomanymagic", schema=schema,
+                                                         project=project, schema=schema,
                                                          create_disposition=BigQueryDisposition.CREATE_IF_NEEDED,
                                                          write_disposition=BigQueryDisposition.WRITE_APPEND))
 
