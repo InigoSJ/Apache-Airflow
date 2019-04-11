@@ -7,24 +7,30 @@ from apache_beam.transforms.core import ParDo
 from apache_beam.io.textio import ReadFromText
 from apache_beam.io.gcp.bigquery import WriteToBigQuery, BigQueryDisposition
 
+#TODO: 
+default_input = ''
+default_table = ''
+default_dataset = ''
+project = ''
+
 
 def run(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--input',
                         dest='input',
-                        default='gs://onetomany_bq/utils/tags.txt',
+                        default=default_input,
                         help='Input file to process.')
     parser.add_argument('--table',
                         dest='table',
-                        default='question_report_metadata',
+                        default=default_table,
                         help='Table to upload.')
     parser.add_argument('--dataset',
                         dest='dataset',
-                        default='StackOverflow',
+                        default=default_dataset,
                         help='Dataset where the table is store. Needs to exists beforehand')
 
     known_args, pipeline_args = parser.parse_known_args(argv)
-    pipeline_args.extend(['--project=onetomanymagic'])
+    pipeline_args.extend(['--project={}'.format(project)])
 
     pipeline_options = PipelineOptions(pipeline_args)
 
@@ -78,7 +84,7 @@ def run(argv=None):
                     | "API call for each Tag" >> ParDo(fn=QuestionAPI)
                     | "Writing to BQ" >> WriteToBigQuery(table=known_args.table,
                                                          dataset=known_args.dataset,
-                                                         project="onetomanymagic", schema=schema,
+                                                         project=project, schema=schema,
                                                          create_disposition=BigQueryDisposition.CREATE_IF_NEEDED,
                                                          write_disposition=BigQueryDisposition.WRITE_APPEND))
 
