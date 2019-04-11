@@ -36,4 +36,13 @@ This was done on Google Cloud Composer:
 	* table_question
 	* tags_path: full GCS path to file that contains the desired tags
 	* temp_bucket: Dataflow's temp bucket folder. Full GCS path
+	
+## License
+
+These examples are provided under the Apache License 2.0.
+
+## Issues
+
+Report any issue to the GitHub issue tracker.
+
 
